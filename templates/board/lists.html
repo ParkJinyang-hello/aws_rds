@@ -7,5 +7,14 @@
 </head>
 <body>
     <h1>board_lists</h1>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <strong>{post.title}</strong><span>{{post.created_at}}</span>
+            <a href="{% url board_update post.id %}">수정</a>
+            <a href="{% url board_delete post.id %}">삭제</a>
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
