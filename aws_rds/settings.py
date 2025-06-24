@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-wa8c$s0eal9g-kt%d)je5_!lc^5*9i*+xuk(@_1&1o01c!hsd)'
+SECRET_KEY = 'django-insecure-z^08s-7hf*f5g6#6f4qko$ck7zvni+!1!-k#^u3a12q0%563q!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -72,15 +72,15 @@ WSGI_APPLICATION = 'aws_rds.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aws_rds',
-        'USER' : 'admin',
-        'PASSWORD' : 'admin1234',
-        'HOST' : 'database-1.cp2ogy44gk4y.ap-northeast-2.rds.amazonaws.com',
-        'PORT' : '3306'
+        'NAME': os.environ.get('NAME'),
+        'USER':os.environ.get('USER'),
+        'PASSWORD':os.environ.get('PASSWORD'),
+        'HOST' : os.environ.get('HOST'),
+        'PORT' : os.environ.get('PORT')
     }
 }
 
@@ -107,19 +107,22 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
-
-USE_TZ = True
+USE_LI0N = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

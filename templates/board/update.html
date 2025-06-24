@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>update</title>
-</head>
-<body>
+{% extents "base.html" %}
+{% block title %}업데이트{% endblock %}
+{% block header %}게시글 수정{% endblock %}
+
+{% block body %}
     <h1>게시글 수정</h1>
     <form method="post">
         {% csrf_token %}
@@ -17,5 +14,4 @@
         </p>
             <button type="submit">저장</button>
     </form>
-</body>
-</html>
+{% endblock %}
